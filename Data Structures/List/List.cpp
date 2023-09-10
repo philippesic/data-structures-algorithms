@@ -1,34 +1,40 @@
 #include "List.hpp"
 #include <iostream>
+#include <list>
+#include <forward_list>
 
 int main() {
-    ListManager manager;
+    std::list<int> doubleList;          // A doubly-linked list
+    std::forward_list<int> singleList;  // A singly-linked list
+
+    List<std::list<int> > doub;
+    List<std::forward_list<int> > sing;
 
     // Test doubly-linked list
     std::cout << "Testing Doubly-Linked List:" << std::endl;
-    manager.addToDoublyLinkedListBack(10);
-    manager.addToDoublyLinkedListBack(20);
-    manager.addToDoublyLinkedListFront(5);
-    manager.printDoublyLinkedList();  // Output: 5 10 20
+    doub.addToBack(doubleList, 10);
+    doub.addToBack(doubleList, 20);
+    doub.addToFront(doubleList, 5);
+    doub.printList(doubleList);  // Output: 5 10 20
 
-    manager.removeFromDoublyLinkedListBack();
-    manager.removeFromDoublyLinkedListFront();
-    manager.printDoublyLinkedList();  // Output: 10
+    doub.removeFromBack(doubleList);
+    doub.removeFromFront(doubleList);
+    doub.printList(doubleList);  // Output: 10
 
-    manager.removeFromDoublyLinkedListBack();
-    manager.printDoublyLinkedList();  // Output: (empty)
+    doub.removeFromBack(doubleList);
+    doub.printList(doubleList);  // Output: (empty)
 
     // Test singly-linked list
     std::cout << "\nTesting Singly-Linked List:" << std::endl;
-    manager.addToSinglyLinkedListFront(30);
-    manager.addToSinglyLinkedListFront(40);
-    manager.printSinglyLinkedList();  // Output: 40 30
+    sing.addToFront(singleList, 30);
+    sing.addToFront(singleList, 40);
+    sing.printList(singleList);  // Output: 40 30
 
-    manager.removeFromSinglyLinkedListFront();
-    manager.printSinglyLinkedList();  // Output: 30
+    sing.removeFromFront(singleList);
+    sing.printList(singleList);  // Output: 30
 
-    manager.removeFromSinglyLinkedListFront();
-    manager.printSinglyLinkedList();  // Output: (empty)
+    sing.removeFromFront(singleList);
+    sing.printList(singleList);  // Output: (empty)
 
     return 0;
 }
